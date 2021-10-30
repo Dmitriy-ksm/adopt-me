@@ -1,5 +1,4 @@
 import { Component } from "react";
-//eslint-disable-next-line
 import { withRouter } from "react-router";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";

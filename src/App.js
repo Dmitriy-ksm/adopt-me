@@ -1,6 +1,5 @@
 import { StrictMode, useState } from "react";
 import ReactDOM from "react-dom";
-//eslint-disable-next-line
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
