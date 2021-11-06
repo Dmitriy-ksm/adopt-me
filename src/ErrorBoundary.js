@@ -1,5 +1,4 @@
 import { Component } from "react";
-//eslint-disable-next-line
 import { Link, Redirect } from "react-router-dom";
 
 class ErrorBoundary extends Component {

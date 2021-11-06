@@ -1,4 +1,3 @@
-//eslint-disable-next-line
 import { Link } from "react-router-dom";
 
 const Pet = ({ name, animal, breed, images, location, id }) => {
