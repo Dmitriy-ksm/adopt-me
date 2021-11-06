@@ -1,22 +1,16 @@
 import { Component } from "react";
-import { withRouter } from "react-router";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
 import Modal from "./Modal";
+import { useParams } from "react-router";
 
 class Details extends Component {
   state = { loading: true, showModal: false };
-  // replaces the above thanks to @babel/plugin-proposal-class-properties & @babel/preset-env
-  //   constructor() {
-  //     super();
-
-  //     this.state = { loading: true };
-  //   }
 
   async componentDidMount() {
     const res = await fetch(
-      `http://pets-v2.dev-apis.com/pets?id=${this.props.match.params.id}`
+      `http://pets-v2.dev-apis.com/pets?id=${this.props.params.id}`
     );
     const json = await res.json();
     this.setState(
@@ -41,6 +35,7 @@ class Details extends Component {
     if (this.state.loading) {
       return <h2>loading ...</h2>;
     }
+
     const { animal, breed, city, state, description, name, images, showModal } =
       this.state;
 
@@ -79,12 +74,12 @@ class Details extends Component {
   }
 }
 
-const DetailsWithRouter = withRouter(Details);
-
-export default function DetailsWithErrorBoundary() {
+const DetailsWithErrorBoundary = (props) => {
   return (
     <ErrorBoundary>
-      <DetailsWithRouter />
+      <Details {...props} params={useParams()} />
     </ErrorBoundary>
   );
-}
+};
+
+export default DetailsWithErrorBoundary;
