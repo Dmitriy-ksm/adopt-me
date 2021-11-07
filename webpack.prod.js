@@ -24,16 +24,6 @@ module.exports = merge(common, {
         },
         chunks: ["main", "babel"],
       }),
-      // new HtmlWebpackPlugin({
-      //   template: "./src/404.html",
-      //   filename: "404.html",
-      //   minify: {
-      //     removeAttributeQuotes: true,
-      //     collapseWhitespace: true,
-      //     removeComments: true,
-      //   },
-      //   chunks: ["main", "babel"],
-      // }),
     ],
   },
   module: {

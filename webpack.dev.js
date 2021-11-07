@@ -1,7 +1,6 @@
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 const common = require("./webpack.common");
 const { merge } = require("webpack-merge");
-//const { SourceMapDevToolPlugin } = require("webpack");
 const path = require("path");
 
 var APP_DIR = path.resolve(__dirname, "src");
@@ -13,9 +12,6 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
-    // new SourceMapDevToolPlugin({
-    //   filename: "[file].map",
-    // }),
   ],
   module: {
     rules: [

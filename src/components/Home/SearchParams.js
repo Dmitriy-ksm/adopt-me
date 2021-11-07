@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../Shared/ThemeContext";
 import Results from "./Results";
-import useBreedList from "./useBreedList";
+import useBreedList from "../../api/useBreedList";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 

@@ -1,8 +1,8 @@
 import { Component } from "react";
-import Carousel from "./Carousel";
-import ErrorBoundary from "./ErrorBoundary";
-import ThemeContext from "./ThemeContext";
-import Modal from "./Modal";
+import Carousel from "../Shared/Carousel";
+import ErrorBoundary from "../Shared/ErrorBoundary";
+import ThemeContext from "../Shared/ThemeContext";
+import Modal from "../Shared/Modal";
 import { useParams } from "react-router";
 
 class Details extends Component {
