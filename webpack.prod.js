@@ -22,7 +22,18 @@ module.exports = merge(common, {
           collapseWhitespace: true,
           removeComments: true,
         },
+        chunks: ["main", "babel"],
       }),
+      // new HtmlWebpackPlugin({
+      //   template: "./src/404.html",
+      //   filename: "404.html",
+      //   minify: {
+      //     removeAttributeQuotes: true,
+      //     collapseWhitespace: true,
+      //     removeComments: true,
+      //   },
+      //   chunks: ["main", "babel"],
+      // }),
     ],
   },
   module: {
@@ -30,6 +41,11 @@ module.exports = merge(common, {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
+      },
+      {
+        test: /\.jsx?$/,
+        exclude: [/node_modules/],
+        use: ["babel-loader"],
       },
     ],
   },

@@ -4,21 +4,20 @@ var APP_DIR = path.resolve(__dirname, "src");
 //var babelPolyfill = require("babel-polyfill");
 
 module.exports = {
-  entry: ["babel-polyfill", APP_DIR + "/index.js"],
+  entry: {
+    babel: "babel-polyfill",
+    main: APP_DIR + "/index.js",
+  },
   output: {
     path: BUILD_DIR,
-    filename: "bundle.[hash].js",
+    filename: "[name].bundle.[hash].js",
+    publicPath: "/",
   },
   module: {
     rules: [
       {
         test: /\.html$/,
         use: ["html-loader"],
-      },
-      {
-        test: /\.jsx?$/,
-        exclude: [/node_modules/],
-        use: ["babel-loader"],
       },
     ],
   },

@@ -7,8 +7,9 @@
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "start": "webpack-dev-server --config webpack.dev.js --open",
-    "build": "webpack --config webpack.prod.js"
+    "start": "webpack-dev-server --history-api-fallback --config webpack.dev.js --open",
+    "build": "webpack --config webpack.prod.js",
+    "serveprod": "npm run build && http-server --proxy http://localhost:8080? ./dist"
   },
   "repository": {
     "type": "git",
@@ -56,6 +57,7 @@
     "postcss-loader": "^6.2.0",
     "prettier": "^2.4.1",
     "prettier-loader": "^3.3.0",
+    "source-map-loader": "^3.0.0",
     "style-loader": "^3.3.1",
     "tailwindcss": "^2.2.19",
     "webpack": "^5.62.1",
