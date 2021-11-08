@@ -1,15 +1,29 @@
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 const common = require("./webpack.common");
 const { merge } = require("webpack-merge");
-//const path = require("path");
+const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
+var BUILD_DIR = path.resolve(__dirname, "dist");
+var APP_DIR = path.resolve(__dirname, "src");
+
 module.exports = merge(common, {
   mode: "production",
+  entry: {
+    main: APP_DIR + "/components/ClientApp.js",
+  },
+  output: {
+    path: BUILD_DIR,
+    filename: "[name].bundle.[hash].js",
+    publicPath: "/dist/",
+  },
   optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
     minimizer: [
       new CssMinimizerPlugin(),
       new TerserPlugin({
@@ -22,7 +36,7 @@ module.exports = merge(common, {
           collapseWhitespace: true,
           removeComments: true,
         },
-        chunks: ["main", "babel"],
+        // chunks: ["main"],
       }),
     ],
   },
@@ -44,4 +58,3 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(),
   ],
 });
-1;
