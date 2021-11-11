@@ -3,10 +3,9 @@
     [
       "@babel/preset-env",
       {
-        "useBuiltIns": "usage", // alternative mode: "entry"
+        "useBuiltIns": "usage",
         "corejs": 3, // default would be 2
         "targets": "last 2 versions"
-        // set your own target environment here (see Browserslist)
       }
     ],
     ["@babel/preset-react", { "runtime": "automatic" }]

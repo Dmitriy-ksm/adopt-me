@@ -1,3 +1,4 @@
+// @ts-nocheck
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 const common = require("./webpack.common");
 const { merge } = require("webpack-merge");
@@ -13,7 +14,7 @@ var APP_DIR = path.resolve(__dirname, "src");
 module.exports = merge(common, {
   mode: "production",
   entry: {
-    main: APP_DIR + "/components/ClientApp.js",
+    main: APP_DIR + "/components/ClientApp.jsx",
   },
   output: {
     path: BUILD_DIR,

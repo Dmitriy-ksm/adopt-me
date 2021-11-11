@@ -1,3 +1,4 @@
+// @ts-nocheck
 import express from "express";
 import { renderToNodeStream } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";

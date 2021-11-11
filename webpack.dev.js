@@ -1,3 +1,4 @@
+// @ts-nocheck
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 const common = require("./webpack.common");
 const { merge } = require("webpack-merge");

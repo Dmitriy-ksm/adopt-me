@@ -6,6 +6,8 @@ import ThemeContext from "./Shared/ThemeContext";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
+//should unuse ts via react-router-dom v6
+
 //const Details = lazy(() => import("./Details/Details"));
 //const SearchParams = lazy(() => import("./Home/SearchParams"));
 

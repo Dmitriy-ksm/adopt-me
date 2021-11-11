@@ -1,10 +1,10 @@
 import { Component } from "react";
 import { Link, Navigate } from "react-router-dom";
-
+//should unuse ts via react-router-dom v6
 class ErrorBoundary extends Component {
   state = { hasError: false, redirect: false };
   static getDerivedStateFromError() {
-    return { hasError: true };
+    return { hasError: true, redirect: false };
   }
   componentDidCatch(error, info) {
     console.error("ErrorBoundary caught an error", error, info);

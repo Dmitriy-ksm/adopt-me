@@ -1,3 +1,4 @@
+// @ts-nocheck
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -27,7 +28,15 @@ module.exports = {
         exclude: [/node_modules/],
         use: ["babel-loader"],
       },
+      {
+        test: /\.tsx?$/,
+        use: ["babel-loader", "ts-loader"],
+        exclude: /node_modules/,
+      },
     ],
+  },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
   plugins: [
     //new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
