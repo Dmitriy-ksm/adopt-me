@@ -5,8 +5,8 @@
   "description": "Some homework for the course http://bit.ly/react-6",
   "main": "index.js",
   "scripts": {
-    "format": "prettier --write \"src/**/*.{js,jsx}\"",
-    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
+    "format": "prettier --write \"src/**/*.{js, ts, tsx, jsx}\"",
+    "lint": "eslint \"src/**/*.{ts, tsx, js, jsx}\" --quiet",
     "start": "webpack-dev-server --history-api-fallback --config webpack.dev.js --open",
     "build:client": "webpack --config webpack.prod.client.js",
     "build:server": "webpack --config webpack.prod.server.js",
@@ -84,12 +84,16 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.2",
     "core-js": "^3.19.1",
     "express": "^4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
     "react-router": "^6.0.1",
     "react-router-dom": "^6.0.1",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.0",
     "regenerator-runtime": "^0.13.9"
   }
 }

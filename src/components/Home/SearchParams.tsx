@@ -1,18 +1,26 @@
 import { useState, useEffect, useContext, FunctionComponent } from "react";
+// import { useSelector } from "react-redux";
 import ThemeContext from "../Shared/ThemeContext";
 import Results from "./Results";
 import useBreedList from "../../api/useBreedList";
-import { PetAPIResponse, Animal, Pet } from "../../api/APIResponseTypes";
+import { PetAPIResponse, Animal, Pet } from "../../types/APIResponseTypes";
+
+import changeLocation from "../../store/action-creater/changeLocation";
+import changeAnimal from "../../store/action-creater/changeAnimal";
+import changeBreed from "../../store/action-creater/changeBreed";
+import { useAppDispatch } from "../../store/index";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const ANIMALS: Animal[] = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams: FunctionComponent = () => {
-  const [location, setLocation] = useState("");
-  const [animal, setAnimal] = useState("" as Animal);
-  const [breed, setBreed] = useState("");
+  const animal = useTypedSelector((state) => state.animal);
+  const location = useTypedSelector((state) => state.location);
+  const breed = useTypedSelector((state) => state.breed);
   const [pets, setPets] = useState([] as Pet[]);
   const [breeds] = useBreedList(animal);
   const [theme, setTheme] = useContext(ThemeContext);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     void requestPets();
@@ -25,6 +33,11 @@ const SearchParams: FunctionComponent = () => {
     const json = (await res.json()) as PetAPIResponse;
 
     setPets(json.pets);
+  }
+
+  function handleAnimalChange(value: Animal) {
+    if (value != animal) dispatch(changeBreed(""));
+    dispatch(changeAnimal(value));
   }
 
   return (
@@ -41,7 +54,7 @@ const SearchParams: FunctionComponent = () => {
           <input
             className="search-control"
             id="location"
-            onChange={(e) => setLocation(e.target.value)}
+            onChange={(e) => dispatch(changeLocation(e.target.value))}
             value={location}
             placeholder="Location"
           />
@@ -52,8 +65,8 @@ const SearchParams: FunctionComponent = () => {
             id="animal"
             className="search-control"
             value={animal}
-            onChange={(e) => setAnimal(e.target.value as Animal)}
-            onBlur={(e) => setAnimal(e.target.value as Animal)}
+            onChange={(e) => handleAnimalChange(e.target.value as Animal)}
+            onBlur={(e) => handleAnimalChange(e.target.value as Animal)}
           >
             <option />
             {ANIMALS.map((animal) => (
@@ -71,8 +84,8 @@ const SearchParams: FunctionComponent = () => {
             id="breed"
             className="search-control disabled:opacity-50"
             value={breed}
-            onChange={(e) => setBreed(e.target.value)}
-            onBlur={(e) => setBreed(e.target.value)}
+            onChange={(e) => dispatch(changeBreed(e.target.value))}
+            onBlur={(e) => dispatch(changeBreed(e.target.value))}
           >
             <option />
             {breeds.map((breed) => (

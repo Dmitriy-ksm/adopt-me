@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Animal, BreedListAPIResponse } from "./APIResponseTypes";
+import { Animal, BreedListAPIResponse } from "../types/APIResponseTypes";
 
 const localCache: {
   [index: string]: string[];

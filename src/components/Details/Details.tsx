@@ -4,7 +4,7 @@ import ErrorBoundary from "../Shared/ErrorBoundary";
 import ThemeContext from "../Shared/ThemeContext";
 import Modal from "../Shared/Modal";
 import { useParams } from "react-router";
-import { PetAPIResponse, Animal } from "../../api/APIResponseTypes";
+import { PetAPIResponse, Animal } from "../../types/APIResponseTypes";
 
 class Details extends Component<{ id: string }> {
   state = {
@@ -123,7 +123,7 @@ class Details extends Component<{ id: string }> {
 }
 
 const DetailsWithErrorBoundary: FunctionComponent = (props) => {
-  const params: { id: string } = useParams();
+  const params = useParams() as { id: string };
   return (
     <ErrorBoundary>
       <Details {...props} id={params.id} />

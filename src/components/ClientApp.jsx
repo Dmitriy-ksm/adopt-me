@@ -4,8 +4,6 @@ import App from "./App";
 
 import "../style/style.css";
 
-//import ReactDOM from "react-dom";
-
 hydrate(
   <BrowserRouter>
     <App />

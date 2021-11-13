@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import Pet from "./Pet";
-import { Pet as PetType } from "../../api/APIResponseTypes";
+import { Pet as PetType } from "../../types/APIResponseTypes";
 
 const Results: FunctionComponent<{ pets: PetType[] }> = ({ pets }) => {
   return (
