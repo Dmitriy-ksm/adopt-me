@@ -74,12 +74,5 @@
     "./src/**/*.jsx",
     "./src/components/*.jsx"
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "server",
-    "dist-server",
-    "src/**/*.js",
-    "src/**/*.jsx"
-  ]
+  "exclude": ["node_modules", "dist", "server", "dist-server"]
 }

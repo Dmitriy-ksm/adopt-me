@@ -32,6 +32,7 @@ class Carousel extends Component<IProps> {
     return (
       <div className={"flex justify-center items-center " + className}>
         <img
+          data-testid="hero"
           className="w-4/12 inline-block"
           src={images[active]}
           alt="animal"
@@ -43,6 +44,7 @@ class Carousel extends Component<IProps> {
               key={photo}
               src={photo}
               data-index={index}
+              data-testid={`thumbnail${index}`}
               onClick={this.handleIndexClick}
               className={
                 "rounded-full h-32 w-auto inline-block " +

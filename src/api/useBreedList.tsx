@@ -7,7 +7,7 @@ const localCache: {
 
 type Status = "unloaded" | "loading" | "loaded";
 
-export default function useBreedList(animal: Animal): [string[], Status] {
+export default function useBreedList(animal: Animal | ""): [string[], Status] {
   const [breedList, setBreedList] = useState([] as string[]);
   const [status, setStatus] = useState("unloaded" as Status);
 

@@ -7,3 +7,4 @@ dist-server/
 coverage/
 .vscode/
 package-lock.json
+__snapshots__/

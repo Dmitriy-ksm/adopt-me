@@ -37,11 +37,6 @@ module.exports = merge(common, {
         include: APP_DIR,
         use: ["source-map-loader"],
       },
-      {
-        test: /\.jsx?$/,
-        exclude: [/node_modules/],
-        use: ["babel-loader"],
-      },
     ],
   },
 });

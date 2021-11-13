@@ -1,4 +1,3 @@
-// @ts-nocheck
 import express from "express";
 import { renderToNodeStream } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
@@ -17,7 +16,11 @@ app.use((req, res) => {
 
   const staticContext = {};
   const reactMarkup = (
-    <StaticRouter url={req.url} context={staticContext}>
+    <StaticRouter
+      // @ts-ignore
+      url={req.url}
+      context={staticContext}
+    >
       <App />
     </StaticRouter>
   );

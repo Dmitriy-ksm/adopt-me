@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { TestAction, TestActionTypes } from "../../types/test";
+import { TestAction, TestActionTypes } from "../../types/empty";
 export const testFunction = () => {
   return /*async*/ (dispatch: Dispatch<TestAction>) => {
     try {

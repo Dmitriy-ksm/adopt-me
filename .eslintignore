@@ -1,3 +1,5 @@
 webpack.*.js
-*.config.js
 server/*
+*.config.*
+**/__test__/*
+setupJest.js 

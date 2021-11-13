@@ -14,7 +14,7 @@ var APP_DIR = path.resolve(__dirname, "src");
 module.exports = merge(common, {
   mode: "production",
   entry: {
-    main: APP_DIR + "/components/ClientApp.jsx",
+    main: APP_DIR + "/components/ClientApp.tsx",
   },
   output: {
     path: BUILD_DIR,
@@ -46,11 +46,6 @@ module.exports = merge(common, {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
-      },
-      {
-        test: /\.jsx?$/,
-        exclude: [/node_modules/],
-        use: ["babel-loader"],
       },
     ],
   },

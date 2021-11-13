@@ -1,4 +1,4 @@
-import { TestAction, TestState, TestActionTypes } from "../types/test";
+import { TestAction, TestState, TestActionTypes } from "../types/empty";
 
 const initialState: TestState = {
   test: "no test",

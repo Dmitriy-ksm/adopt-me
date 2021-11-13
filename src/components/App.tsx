@@ -8,7 +8,6 @@ import store from "../store/index";
 
 const App = () => {
   const themeHook = useState("darkblue");
-  // const store = configureStore();
   return (
     <StrictMode>
       <Provider store={store}>
