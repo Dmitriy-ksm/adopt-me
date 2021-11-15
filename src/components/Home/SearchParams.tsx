@@ -1,15 +1,16 @@
-import { useState, useEffect, useContext, FunctionComponent } from "react";
+import { useEffect, useContext, FunctionComponent } from "react";
 // import { useSelector } from "react-redux";
 import ThemeContext from "../Shared/ThemeContext";
 import Results from "./Results";
 import useBreedList from "../../api/useBreedList";
-import { PetAPIResponse, Animal, Pet } from "../../types/APIResponseTypes";
+import { Animal } from "../../types/APIResponseTypes";
 
 import changeLocation from "../../store/action-creater/changeLocation";
 import changeAnimal from "../../store/action-creater/changeAnimal";
 import changeBreed from "../../store/action-creater/changeBreed";
 import { useAppDispatch } from "../../store/index";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { changePets } from "../../store/action-creater/changePet";
 
 const ANIMALS: Animal[] = ["bird", "cat", "dog", "rabbit", "reptile"];
 
@@ -17,23 +18,29 @@ const SearchParams: FunctionComponent = () => {
   const animal = useTypedSelector((state) => state.animal);
   const location = useTypedSelector((state) => state.location);
   const breed = useTypedSelector((state) => state.breed);
-  const [pets, setPets] = useState([] as Pet[]);
+  const pets = useTypedSelector((state) => state.pets);
+  //const [pets, setPets] = useState([] as Pet[]);
   const [breeds] = useBreedList(animal);
   const [theme, setTheme] = useContext(ThemeContext);
   const dispatch = useAppDispatch();
 
+  const someDispath = changePets(animal, location, breed);
+
+  async function requestPetsV2() {
+    await someDispath(dispatch);
+  }
   useEffect(() => {
-    void requestPets();
+    void requestPetsV2();
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
-  async function requestPets() {
-    const res = await fetch(
-      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
-    );
-    const json = (await res.json()) as PetAPIResponse;
+  // async function requestPets() {
+  //   const res = await fetch(
+  //     `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+  //   );
+  //   const json = (await res.json()) as PetAPIResponse;
 
-    setPets(json.pets);
-  }
+  //   //setPets(json.pets);
+  // }
 
   function handleAnimalChange(value: Animal) {
     if (value != animal) dispatch(changeBreed(""));
@@ -46,7 +53,7 @@ const SearchParams: FunctionComponent = () => {
         className="p-10 mb-10 rounded-lg bg-gray-200 shadow-lg flex flex-col justify-center items-center divide-y divide-gray-900"
         onSubmit={(e) => {
           e.preventDefault();
-          void requestPets();
+          void requestPetsV2();
         }}
       >
         <label className="search-label" htmlFor="location">
@@ -116,7 +123,7 @@ const SearchParams: FunctionComponent = () => {
           Submit
         </button>
       </form>
-      <Results pets={pets} />
+      <Results pets={pets.pets} />
     </div>
   );
 };
